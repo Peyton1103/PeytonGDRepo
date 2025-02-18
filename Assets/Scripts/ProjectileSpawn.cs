@@ -4,47 +4,29 @@ using UnityEngine;
 
 public class ProjectileSpawn : MonoBehaviour
 {
-    public GameObject[] projectilePrefabs;
-    private float spawnPosX = 10;
-    private float spawnRangeZ = 5;
-    private float otherspawnPosX = -10;
-    private float startDelay = 2;
-    private float spawnInterval = 1.5f;
+    public GameObject projectilePrefabs;
+ 
+    private float startDelayMin = 1;
+    private float startDelayMax = 5;
+    private float spawnIntervalMin = 2;
+    private float spawnIntervalMax = 6;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnProjectileRight", startDelay, spawnInterval);
+        InvokeRepeating("SpawnProjectile", Random.Range(startDelayMin, startDelayMax), Random.Range(spawnIntervalMin, spawnIntervalMax));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    void SpawnProjectileRight()
+    void SpawnProjectile()
     {
-        //randomly spawn balls on the right
-
-        Vector3 spawnPos = new Vector3((spawnPosX),0, Random.Range(-spawnRangeZ, spawnRangeZ));
-
-        int ballIndex = Random.Range(0, projectilePrefabs.Length);
-
-        Instantiate(projectilePrefabs[ballIndex], spawnPos,
-        projectilePrefabs[ballIndex].transform.rotation);
+        Instantiate(projectilePrefabs, transform.position, gameObject.transform.rotation);
     }
 
-    void SpawnProjectileLeft()
-    {
-        //randomly spawn balls on the right
-
-        Vector3 spawnPos = new Vector3((otherspawnPosX), 0, Random.Range(-spawnRangeZ, spawnRangeZ));
-
-        int ballIndex = Random.Range(0, projectilePrefabs.Length);
-
-        Instantiate(projectilePrefabs[ballIndex], spawnPos,
-        projectilePrefabs[ballIndex].transform.rotation);
-    }
 }
