@@ -18,22 +18,22 @@ public class OutOfBounds : MonoBehaviour
     {
         if (transform.position.x > topBound)
         {
-            Debug.Log("Game Over!");
+            
             Destroy(gameObject);
         }
         else if (transform.position.x < lowerBound)
         {
-            Debug.Log("Game Over!");
+            
             Destroy(gameObject);
         }
         else if (transform.position.z < lowerBound)
         {
-            Debug.Log("Game Over!");
+           
             Destroy(gameObject);
         }
         else if (transform.position.z > topBound)
         {
-            Debug.Log("Game Over!");
+            
             Destroy(gameObject);
         }
     }
